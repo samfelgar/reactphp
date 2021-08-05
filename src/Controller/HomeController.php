@@ -14,6 +14,8 @@ class HomeController extends Controller
             'date' => (new \DateTime())->format('Y-m-d H:i:s'),
         ];
 
-        return $this->response(json_encode($data));
+        return $this->response(json_encode($data), [
+            'content-type' => 'application/json'
+        ]);
     }
 }
