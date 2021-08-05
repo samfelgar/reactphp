@@ -9,6 +9,11 @@ class HomeController extends Controller
 {
     public function index(Request $request): Response
     {
-        return $this->response('Hello World');
+        $data = [
+            'message' => 'Everything working!',
+            'date' => (new \DateTime())->format('Y-m-d H:i:s'),
+        ];
+
+        return $this->response(json_encode($data));
     }
 }
