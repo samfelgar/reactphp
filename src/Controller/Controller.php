@@ -17,7 +17,7 @@ class Controller
         $response->getBody()->write($string);
 
         foreach ($headers as $name => $value) {
-            $response->withHeader($name, $value);
+            $response = $response->withHeader($name, $value);
         }
 
         return $response;
