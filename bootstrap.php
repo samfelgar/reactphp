@@ -1,9 +1,7 @@
 <?php
 
-use FastRoute\DataGenerator;
-use FastRoute\DataGenerator\CharCountBased;
-use FastRoute\RouteParser;
-use FastRoute\RouteParser\Std;
+use League\Route\Router as LeagueRouter;
+use Psr\Http\Message\ResponseInterface;
 use Samfelgar\Reactphp\Container\Container;
 use Samfelgar\Reactphp\Routing\Router;
 use Whoops\Handler\PrettyPageHandler;
@@ -11,8 +9,9 @@ use Whoops\Run;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-Container::add(RouteParser::class, Std::class);
-Container::add(DataGenerator::class, CharCountBased::class);
+Container::add(LeagueRouter::class)
+    ->addArgument(null)
+    ->setShared();
 
 Router::registerRoutes();
 
