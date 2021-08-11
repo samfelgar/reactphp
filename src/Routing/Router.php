@@ -34,9 +34,9 @@ class Router
         $baseRouter = Container::get(BaseRouter::class);
         $emitter = Container::get(SapiEmitter::class);
 
-        $router = new static($baseRouter, $emitter);
+        static::$router = new static($baseRouter, $emitter);
 
-        return $router;
+        return static::$router;
     }
 
     public static function registerRoutes(): void
