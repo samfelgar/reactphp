@@ -10,13 +10,12 @@ require_once __DIR__ . '/../bootstrap.php';
 /**
  * Emitting the response
  */
-
 $psrFactory = Container::get(Psr17Factory::class);
 
 $requestCreator = new ServerRequestCreator($psrFactory, $psrFactory, $psrFactory, $psrFactory);
 
-$response = Router::instance()->dispatch($requestCreator->fromGlobals());
-
 Router::instance()->setJsonStrategy($psrFactory);
+
+$response = Router::instance()->dispatch($requestCreator->fromGlobals());
 
 Router::instance()->emit($response);
